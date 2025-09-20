@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权益保障部处理平台</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        .form-input {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .form-input:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d4e6fa 100%);
+            border-left: 4px solid #4299e1;
+        }
+        .wechat-highlight {
+            color: #e53e3e;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="py-8 px-4">
+    <div class="max-w-2xl mx-auto">
+        <div class="glassmorphism p-8 mb-6">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">
+                <i class="fas fa-shield-alt text-blue-500 mr-2"></i>
+                权益保障部处理平台
+            </h1>
+            <p class="text-center text-gray-600 mb-6">请填写以下表单提交您的问题，我们将尽快为您处理</p>
+            
+            <form id="feedbackForm" class="space-y-6">
+                <div class="space-y-1">
+                    <label for="restaurant" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-utensils text-blue-400 mr-1"></i>
+                        1. 哪个餐厅：
+                    </label>
+                    <input type="text" id="restaurant" name="restaurant" required 
+                           class="form-input w-full px-4 py-2 rounded-lg"
+                           placeholder="请输入餐厅名称">
+                </div>
+                
+                <div class="space-y-1">
+                    <label for="stall" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-store text-blue-400 mr-1"></i>
+                        2. 第几档口或买什么的档口：
+                    </label>
+                    <input type="text" id="stall" name="stall" required 
+                           class="form-input w-full px-4 py-2 rounded-lg"
+                           placeholder="请输入档口号或档口类型">
+                </div>
+                
+                <div class="space-y-1">
+                    <label for="problem" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-exclamation-triangle text-blue-400 mr-1"></i>
+                        3. 有什么要处理的问题：
+                    </label>
+                    <textarea id="problem" name="problem" required rows="5"
+                              class="form-input w-full px-4 py-2 rounded-lg"
+                              placeholder="请详细描述您遇到的问题"></textarea>
+                </div>
+                
+                <div class="space-y-1">
+                    <label for="contact" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-phone-alt text-blue-400 mr-1"></i>
+                        4. 请留下您的手机号或者微信号（方便我们处理问题）：
+                    </label>
+                    <input type="text" id="contact" name="contact" required 
+                           class="form-input w-full px-4 py-2 rounded-lg"
+                           placeholder="请输入手机号或微信号">
+                </div>
+                
+                <button type="submit" class="btn-primary w-full py-3 px-4 rounded-lg text-white font-semibold">
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    提交问题
+                </button>
+            </form>
+        </div>
+        
+        <div class="glassmorphism p-6 contact-card">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                <i class="fas fa-headset text-blue-500 mr-2"></i>
+                紧急联系方式
+            </h3>
+            <p class="text-gray-700 mb-2">
+                如遇问题未及时处理，请添加微信客服：
+                <span class="wechat-highlight">19062105740</span>
+            </p>
+            <p class="text-gray-600">
+                <i class="far fa-clock text-blue-400 mr-1"></i>
+                工作时间：周一至周五 9:00-18:00
+            </p>
+        </div>
+    </div>
+
+    <footer class="mt-12 text-center text-gray-500 text-sm">
+        <p>created by <a href="https://space.coze.cn" class="text-blue-500 hover:underline">coze space</a></p>
+        <p>页面内容均由 AI 生成，仅供参考</p>
+    </footer>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 显示提交成功弹窗
+            Swal.fire({
+                title: '感谢您的反馈！',
+                html: '我们将在1-3个工作日内处理您的问题。<br><br>如有紧急情况，请添加微信客服：<strong class="text-red-500">19062105740</strong>',
+                icon: 'success',
+                confirmButtonText: '确定',
+                confirmButtonColor: '#4299e1'
+            }).then(() => {
+                // 重置表单
+                this.reset();
+            });
+        });
+
+        // 引入SweetAlert2
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
